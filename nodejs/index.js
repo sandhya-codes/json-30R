@@ -1,12 +1,17 @@
 
 let addData = function(){
-    var username = document.getElementById("username");
-    var message  = document.getElementById("message")
-    var phone = document.getElementById("phone")
-    var city = document.getElementById("city")
-    var state = document.getElementById("state")
+    var username = document.getElementById("username").value.trim()
+    var message  = document.getElementById("message").value.trim()
+    var phone = document.getElementById("phone").value.trim()
+    var city = document.getElementById("city").value.trim()
+    var state = document.getElementById("state").value.trim()
     // console.log(username.value)
     // console.log(message.value)
+    // let isvalid = true
+    if(!username||!message ||!phone||!city||!state ){
+        alert("enter requrired field")
+        return
+    }
     postData(username.value,message.value,phone.value,city.value,state.value)
 }
 
@@ -32,7 +37,7 @@ fetch(url,options)
     .then(response => {
         if(response.ok){
                 console.log("Data added")
-                displayData()
+                // displayData()
                 alert("Data added successfully..")
             }
         })
@@ -46,6 +51,8 @@ fetch(url,options)
 
 function displayData(){
     var container = document.getElementById("container")
+    container.innerHTML = "";
+
     fetch("https://booming-deciduous-wanderer.glitch.me/users")
         .then(response =>response.json())
         .then(data =>{
@@ -74,7 +81,6 @@ function displayData(){
                 phonepara.innerText = phone
                 citypara.innerText = city
                 statepara.innerText = state
-
 
                 item.appendChild(messagepara)
                 item.appendChild(usernamepara)
@@ -122,15 +128,15 @@ displayData()
 // //     .then(responce =>responce.json())
 // //     .then(data =>console.log(data))
 
-// // fetch("http://localhost:3000/emp/11",{
-// //     "method":"DELETE"
-// // }).then(res =>{
-// //     if (res.ok){
-// //         console.log("Data Deleted")
-// //     }
-// // }).catch(err =>{
-// //     console.error(err)
-// // })
+// fetch("https://booming-deciduous-wanderer.glitch.me/users",{
+//     "method":"DELETE"
+// }).then(res =>{
+//     if (res.ok){
+//         console.log("Data Deleted")
+//     }
+// }).catch(err =>{
+//     console.error(err)
+// })
 
 
 // // fetch("http://localhost:3000/emp/1" ,{
