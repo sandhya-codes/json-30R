@@ -31,9 +31,9 @@ function postData(username,message,phone,city,state){
 fetch(url,options)
     .then(response => {
         if(response.ok){
-                // alert("Data added successfully..")
                 console.log("Data added")
-                // displayData()
+                displayData()
+                alert("Data added successfully..")
             }
         })
         .catch(err =>{
